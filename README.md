@@ -1,6 +1,6 @@
 # Portfolio Website
 
-My personal portfolio website: https://ggouzi.com
+My personal portfolio website: https://resume.ggouzi.com
 
 ## Structure
 
