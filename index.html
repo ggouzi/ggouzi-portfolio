@@ -35,6 +35,7 @@
                 <a href="#certifications" class="nav-item" data-section="certifications">Certifications</a>
                 <a href="#international" class="nav-item" data-section="international">International</a>
                 <a href="#skills" class="nav-item" data-section="skills">Technical Skills</a>
+                <a href="#homelab" class="nav-item" data-section="homelab">Homelab</a>
             </div>
         </nav>
 
@@ -83,6 +84,18 @@
                 <div class="certifications">
                     <h3 class="cert-title"></h3>
                     <div class="cert-grid">
+                        <a href="https://ubuntu.com/credentials" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                            <div class="cert-item">
+                                <div class="cert-logo-container">
+                                    <img src="logos/ubuntu.png" alt="Canonical" class="tech-logo">
+                                </div>
+                                <div class="cert-content">
+                                    <span class="cert-name">Using Ubuntu Server</span>
+                                    <span class="cert-provider">Canonical</span>
+                                    <span class="cert-date">2026</span>
+                                </div>
+                            </div>
+                        </a>
                         <a href="https://www.nvidia.com/en-us/training/instructor-led-workshops/ai-infrastructure/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
                             <div class="cert-item">
                                 <div class="cert-logo-container">
@@ -149,7 +162,7 @@
                                     <img src="logos/ubuntu.png" alt="Canonical" class="tech-logo">
                                 </div>
                                 <div class="cert-content">
-                                    <span class="cert-name">CUE.01 Linux</span>
+                                    <span class="cert-name">Using Ubuntu Linux</span>
                                     <span class="cert-provider">Canonical</span>
                                     <span class="cert-date">2024</span>
                                 </div>
@@ -487,9 +500,67 @@
             </section>
         </main>
 
+            <!-- Homelab Section -->
+            <section id="homelab" class="homelab-section">
+                <h2 class="section-title">Homelab</h2>
+                <h3 class="category-title">Personal infrastructure running self-hosted services</h3>
+
+                <div class="homelab-grid">
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-server"></i>
+                            <h3>Compute — Microcloud</h3>
+                        </div>
+                        <p>Cluster built on <a href="https://canonical.com/microcloud" target="_blank" rel="noopener noreferrer"><strong>Canonical Microcloud</strong></a> using <strong>LXD</strong> to run both VMs and system containers. Hosts production-grade workloads including <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener noreferrer"><strong>Paperless-ngx</strong></a> for document management.</p>
+                    </div>
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>DNS &amp; Network — AdGuard HA</h3>
+                        </div>
+                        <p>Primary <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" rel="noopener noreferrer"><strong>AdGuard Home</strong></a> instance on a <strong>Raspberry Pi</strong> acting as DNS resolver and DHCP server. Secondary instance running inside an <strong>LXD VM</strong> for high availability. Both filter ads and trackers network-wide.</p>
+                    </div>
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Local Utilities</h3>
+                        </div>
+                        <p>Various self-hosted utilities for privacy and offline use, including <a href="https://stirlingpdf.io" target="_blank" rel="noopener noreferrer"><strong>Stirling PDF</strong></a> for local document processing (no data leaving the network) and <a href="https://it-tools.tech" target="_blank" rel="noopener noreferrer"><strong>IT Tools</strong></a> as a developer toolbox, among others.</p>
+                    </div>
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-cloud"></i>
+                            <h3>Exposure — Cloudflare</h3>
+                        </div>
+                        <p>Services exposed externally via <strong>Cloudflare Tunnel</strong> (no open inbound ports). Traffic filtered by <strong>Cloudflare WAF</strong> custom rules to restrict access by geography and threat score.</p>
+                    </div>
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-flask"></i>
+                            <h3>Testing &amp; Provisioning</h3>
+                        </div>
+                        <p><a href="https://canonical-openstack.readthedocs-hosted.com/en/latest/" target="_blank" rel="noopener noreferrer"><strong>Canonical Sunbeam</strong></a> deployed on bare metal for testing OpenStack workloads and cloud API integrations. <a href="https://maas.io" target="_blank" rel="noopener noreferrer"><strong>Canonical MAAS</strong></a> running in a VM for bare-metal provisioning, PXE boot workflows, and machine lifecycle management.</p>
+                    </div>
+
+                    <div class="homelab-card">
+                        <div class="homelab-card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Observability</h3>
+                        </div>
+                        <p><a href="https://www.netdata.cloud" target="_blank" rel="noopener noreferrer"><strong>Netdata</strong></a> for real-time metrics and resource monitoring across all nodes. <strong>Uptime Kuma</strong> for endpoint uptime checks with alerts delivered over a <strong>Telegram bot</strong>.</p>
+                    </div>
+
+                </div>
+            </section>
+
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2025 Gaëtan Gouzi.</p>
+            <p>&copy; 2026 Gaëtan Gouzi.</p>
         </footer>
     </div>
 
@@ -558,6 +629,20 @@
             sections.forEach(section => {
                 navObserver.observe(section);
             });
+
+            // Fade-in animation for homelab cards on scroll
+            const homelabCards = document.querySelectorAll('.homelab-card');
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, i * 80);
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            homelabCards.forEach(card => cardObserver.observe(card));
 
             // Smooth scrolling for navigation links
             navItems.forEach(item => {
