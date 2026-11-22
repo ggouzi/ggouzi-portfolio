@@ -17,9 +17,9 @@
                     <img src="picture.jpg" alt="Gaëtan Gouzi" class="avatar-img">
                 </div>
                 <h1 class="name">Gaëtan Gouzi</h1>
-                <p class="title">Cloud Field Engineer at Canonical <img src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="Canonical" class="canonical-logo"></p>
+                <p class="title">Cloud Field Engineer at Canonical <a href="https://ubuntu.com" target="_blank" rel="noopener noreferrer"><img src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="Canonical" class="canonical-logo"></a></p>
                                 <p class="description">
-                    9+ years of experience designing, architecting, and deploying production-grade distributed private clouds
+                    10 years of experience designing, architecting, and deploying production-grade distributed private clouds. Available for remote and on-site delivery.
                 </p>
                 <p class="description">
                     Previously held technical pre-sales and post-sales roles in video streaming, focusing on real-time advertising and streaming infrastructure.
@@ -425,8 +425,8 @@
                     <h3 class="category-title">Security and Identity</h3>
                     <div class="skills-grid">
                         <div class="skill-item">
-                            <img src="logos/vault.png" alt="Vault" class="tech-logo">
-                            <span>Vault</span>
+                            <img src="logos/openbao.svg" alt="OpenBao" class="tech-logo">
+                            <span>Vault / OpenBao</span>
                         </div>
                         <div class="skill-item">
                             <img src="logos/CIS.png" alt="CIS" class="tech-logo">
@@ -498,7 +498,6 @@
                 </div>
                 </div>
             </section>
-        </main>
 
             <!-- Homelab Section -->
             <section id="homelab" class="homelab-section">
@@ -510,17 +509,17 @@
                     <div class="homelab-card">
                         <div class="homelab-card-header">
                             <i class="fas fa-server"></i>
-                            <h3>Compute — Microcloud</h3>
+                            <h3>Compute - Microcloud</h3>
                         </div>
-                        <p>Cluster built on <a href="https://canonical.com/microcloud" target="_blank" rel="noopener noreferrer"><strong>Canonical Microcloud</strong></a> using <strong>LXD</strong> to run both VMs and system containers. Hosts production-grade workloads including <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener noreferrer"><strong>Paperless-ngx</strong></a> for document management.</p>
+                        <p>Cluster built on <a href="https://canonical.com/microcloud" target="_blank" rel="noopener noreferrer"><strong>Canonical Microcloud</strong></a> using <strong>LXD</strong> to run both VMs and system containers.</p>
                     </div>
 
                     <div class="homelab-card">
                         <div class="homelab-card-header">
                             <i class="fas fa-shield-alt"></i>
-                            <h3>DNS &amp; Network — AdGuard HA</h3>
+                            <h3>DNS &amp; Network - AdGuard HA</h3>
                         </div>
-                        <p>Primary <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" rel="noopener noreferrer"><strong>AdGuard Home</strong></a> instance on a <strong>Raspberry Pi</strong> acting as DNS resolver and DHCP server. Secondary instance running inside an <strong>LXD VM</strong> for high availability. Both filter ads and trackers network-wide.</p>
+                        <p>Primary <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" rel="noopener noreferrer"><strong>AdGuard Home</strong></a> instance on a <strong>Raspberry Pi</strong> acting as DNS resolver and DHCP server. Secondary instance running inside an <strong>LXD VM</strong> for high availability. Both filter ads and trackers network-wide. <strong>DynDNS</strong> keeps the dynamic public IP mapped to an always-updatable hostname for remote access.</p>
                     </div>
 
                     <div class="homelab-card">
@@ -528,13 +527,13 @@
                             <i class="fas fa-tools"></i>
                             <h3>Local Utilities</h3>
                         </div>
-                        <p>Various self-hosted utilities for privacy and offline use, including <a href="https://stirlingpdf.io" target="_blank" rel="noopener noreferrer"><strong>Stirling PDF</strong></a> for local document processing (no data leaving the network) and <a href="https://it-tools.tech" target="_blank" rel="noopener noreferrer"><strong>IT Tools</strong></a> as a developer toolbox, among others.</p>
+                        <p>Various self-hosted utilities for privacy and offline use, including <a href="https://stirlingpdf.io" target="_blank" rel="noopener noreferrer"><strong>Stirling PDF</strong></a> for local document processing, <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener noreferrer"><strong>Paperless-ngx</strong></a> for document management, <a href="https://github.com/epileks/opengym" target="_blank" rel="noopener noreferrer"><strong>OpenGym</strong></a> for workouts, <a href="https://github.com/glanceapp/glance" target="_blank" rel="noopener noreferrer"><strong>Glance</strong></a> as a self-hosted dashboard, <a href="https://github.com/getarcaneapp/arcane" target="_blank" rel="noopener noreferrer"><strong>Arcane</strong></a>, and <a href="https://it-tools.tech" target="_blank" rel="noopener noreferrer"><strong>IT Tools</strong></a> as a developer toolbox, among others.</p>
                     </div>
 
                     <div class="homelab-card">
                         <div class="homelab-card-header">
                             <i class="fas fa-cloud"></i>
-                            <h3>Exposure — Cloudflare</h3>
+                            <h3>Exposure - Cloudflare</h3>
                         </div>
                         <p>Services exposed externally via <strong>Cloudflare Tunnel</strong> (no open inbound ports). Traffic filtered by <strong>Cloudflare WAF</strong> custom rules to restrict access by geography and threat score.</p>
                     </div>
@@ -557,14 +556,19 @@
 
                 </div>
             </section>
+        </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2026 Gaëtan Gouzi.</p>
+            <p>&copy; <span id="year"></span> Gaëtan Gouzi</p>
         </footer>
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
         function toggleSkills() {
             const content = document.getElementById('skills-content');
             const icon = document.getElementById('skills-toggle');
